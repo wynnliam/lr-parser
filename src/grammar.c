@@ -48,3 +48,19 @@ void print_grammarsym(struct grammarsym* to_print) {
 	}
 
 }
+
+int destruct_grammarsym(struct grammarsym* sym) {
+	if(!sym)
+		return 0;
+
+	if(sym->type == TYPE_TERMINAL || sym->type == TYPE_NONTERMINAL) {
+		if(sym->str)
+			free(sym->str);
+		else
+			return 0;
+	}
+
+	free(sym);
+
+	return 1;
+}

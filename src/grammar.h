@@ -56,4 +56,20 @@ int construct_grammarsym(struct grammarsym** result, const char* str, const int 
 */
 void print_grammarsym(struct grammarsym* to_print);
 
+/*
+	PRECONDITIONS:
+		- sym is properly constructed (see notes).
+	POSTCONDITIONS:
+		- Sym will be free'd
+	SIDE-EFFECTS:
+		- N/A
+	RETURNS:
+		- 1 if free'd properly
+		- 0 otherwise.
+	NOTES:
+		- If sym is NULL we return 0. No free will happen.
+		- If type is nonterminal or terminal, and str is null, no free happens (returns 0).
+*/
+int destruct_grammarsym(struct grammarsym* sym);
+
 #endif
