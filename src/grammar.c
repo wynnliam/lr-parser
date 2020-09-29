@@ -127,3 +127,18 @@ void print_production(struct production* prod) {
 
 	printf("\n");
 }
+
+int destruct_production(struct production* prod) {
+	if(!prod)
+		return 0;
+
+	if(prod->leftside)
+		destruct_grammarsym(prod->leftside);
+
+	int i;
+	for(i = 0; i < prod->rightside_len; i++)
+		destruct_grammarsym(prod->rightside[i]);
+
+	free(prod);
+	return 1;
+}

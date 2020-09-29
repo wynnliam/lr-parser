@@ -171,4 +171,18 @@ int add_rightside(struct production* prod, struct grammarsym* right);
 */
 void print_production(struct production* prod);
 
+/*
+	PRECONDITIONS:
+		- prod is initialized
+	POSTCONDITIONS:
+		- prod will be totally free'd
+	SIDE-EFFECTS:
+		- N/A
+	RETURNS:
+		- 1 if prod is deallocated
+		- 0 otherwise. That is, prod is NULL
+	NOTES:
+		- N/A
+*/
+int destruct_production(struct production* prod);
 #endif

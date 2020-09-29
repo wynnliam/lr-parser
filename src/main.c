@@ -21,5 +21,7 @@ int main() {
 	add_rightside(f_prod, cp);
 
 	print_production(f_prod);
+
+	destruct_production(f_prod);
 	return 0;
 }
