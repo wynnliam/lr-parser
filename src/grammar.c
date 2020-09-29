@@ -6,6 +6,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+/* GRAMMAR SYMBOL OPERATIONS */
+
 int construct_grammarsym(struct grammarsym** result, const char* str, const int type) {
 	if(!result)
 		return 0;
@@ -79,3 +81,5 @@ int destruct_grammarsym(struct grammarsym* sym) {
 
 	return 1;
 }
+
+/* PRODUCTION OPERATIONS */

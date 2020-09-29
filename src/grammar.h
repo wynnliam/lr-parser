@@ -8,6 +8,8 @@
 #define TYPE_EMPTY			TYPE_TERMINAL + 1
 #define TYPE_END			TYPE_EMPTY + 1
 
+/* GRAMMAR SYMBOL DEFINITIONS */
+
 // A simple definition for a grammar symbol. This
 // can be a non-terminal, terminal, or empty. Empty
 // is also a terminal, but since it is a unique enough
@@ -91,5 +93,36 @@ void print_grammarsym(struct grammarsym* to_print);
 		- If type is nonterminal or terminal, and str is null, no free happens (returns 0).
 */
 int destruct_grammarsym(struct grammarsym* sym);
+
+/* PRODUCTION DEFINITIONS*/
+
+/*
+	Suppose leftside is A, and rightside is B, then
+	this represents a single production of the form:
+
+	A -> B
+
+	Now, since a production can have a form like:
+
+	A -> ( E )
+
+	Which has three symbols, we make the rightside
+	and array. Since this is a toy program, we'll limit
+	the amount of symbols to 10.
+*/
+struct production {
+	struct grammarsym* leftside;
+	struct grammarsym* rightside[10];
+	unsigned int rightside_len;
+};
+
+/*
+	PRECONDITIONS:
+	POSTCONDITIONS:
+	SIDE-EFFECTS:
+	RETURNS:
+	NOTES:
+*/
+int construct_production(struct production** result, const struct grammarsym* leftside);
 
 #endif
