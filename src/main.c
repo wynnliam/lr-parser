@@ -6,10 +6,5 @@
 
 int main() {
 	printf("Hello, world.\n");
-
-	struct grammarsym* sym;
-	construct_grammarsym(&sym, "E'", TYPE_EMPTY);
-	print_grammarsym(sym);
-	destruct_grammarsym(sym);
 	return 0;
 }

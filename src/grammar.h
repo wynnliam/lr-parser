@@ -41,6 +41,26 @@ int construct_grammarsym(struct grammarsym** result, const char* str, const int 
 
 /*
 	PRECONDITIONS:
+		- a, b properly initialized
+	POSTCONDITIONS:
+		- N/A
+	SIDE-EFFECTS:
+		- N/A
+	RETURNS:
+		- 1 is a, b are equal.
+		- 0 otherwise.
+	NOTES:
+		- Equality defined as follows:
+			- empty and empty is equal
+			- end and end is equal
+			- otherwise, types and str must be equal.
+		- If either a or b are null, we return 0.
+		- Besides null-checking, no other error checking is done.
+*/
+int grammarsym_equals(struct grammarsym* a, struct grammarsym* b);
+
+/*
+	PRECONDITIONS:
 		- N/A, technically. But for anything interesting, you need a 
 		valid grammarsym
 	POSTCONDITIONS:

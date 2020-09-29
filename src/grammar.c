@@ -30,6 +30,21 @@ int construct_grammarsym(struct grammarsym** result, const char* str, const int 
 	return 1;
 }
 
+int grammarsym_equals(struct grammarsym* a, struct grammarsym* b) {
+	if(!a || !b)
+		return 0;
+
+	if((a->type == TYPE_EMPTY && b->type == TYPE_EMPTY) ||
+	   (a->type == TYPE_END && b->type == TYPE_END))
+	{
+		return 1;
+	}
+
+	else {
+		return a->type == b->type && strcmp(a->str, b->str) == 0;
+	}
+}
+
 void print_grammarsym(struct grammarsym* to_print) {
 	if(!to_print)
 		return;
