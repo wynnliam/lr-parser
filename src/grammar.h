@@ -39,6 +39,21 @@ struct grammarsym {
 */
 int construct_grammarsym(struct grammarsym** result, const char* str, const int type);
 
+/*
+	PRECONDITIONS:
+		- N/A, technically. But for anything interesting, you need a 
+		valid grammarsym
+	POSTCONDITIONS:
+		- N/A
+	SIDE-EFFECTS:
+		- if grammarsym is not null, we print the appropriate symbol.
+		- Otherwise, N/A
+	RETURNS:
+		- N/A
+	NOTES:
+		- If type is terminal or nonterminal, please make sure the str
+		is valid. Otherwise it will not print.
+*/
 void print_grammarsym(struct grammarsym* to_print);
 
 #endif
