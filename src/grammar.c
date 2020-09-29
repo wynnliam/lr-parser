@@ -54,14 +54,14 @@ void print_grammarsym(struct grammarsym* to_print) {
 	int temp_type = to_print->type;
 
 	if(temp_type == TYPE_EMPTY) {
-		printf("e\n");
+		printf("e");
 	} else if(temp_type == TYPE_END) {
-		printf("$\n");
+		printf("$");
 	} else {
 		if(!to_print->str)
 			return;
 		else
-			printf("%s\n", to_print->str);
+			printf("%s", to_print->str);
 	}
 
 }
@@ -112,4 +112,18 @@ int add_rightside(struct production* prod, struct grammarsym* right) {
 	prod->rightside_len += 1;
 
 	return 1;
+}
+
+void print_production(struct production* prod) {
+	if(!prod || !prod->leftside || prod->rightside_len < 1)
+		return;
+
+	print_grammarsym(prod->leftside);
+	printf(" -> ");
+
+	unsigned int i;
+	for(i = 0; i < prod->rightside_len; i++)
+		print_grammarsym(prod->rightside[i]);
+
+	printf("\n");
 }

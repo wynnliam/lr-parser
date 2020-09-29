@@ -19,5 +19,7 @@ int main() {
 	add_rightside(f_prod, op);
 	add_rightside(f_prod, e);
 	add_rightside(f_prod, cp);
+
+	print_production(f_prod);
 	return 0;
 }

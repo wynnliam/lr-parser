@@ -157,4 +157,18 @@ int construct_production(struct production** result, struct grammarsym* leftside
 */
 int add_rightside(struct production* prod, struct grammarsym* right);
 
+/*
+	PRECONDITIONS:
+		- prod is initialized
+	POSTCONDITIONS:
+		- prod gets printed to the screen
+	SIDE-EFFECTS:
+		- N/A
+	RETURNS:
+		- N/A
+	NOTES:
+		- N/A
+*/
+void print_production(struct production* prod);
+
 #endif
