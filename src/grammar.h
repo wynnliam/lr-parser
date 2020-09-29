@@ -39,4 +39,6 @@ struct grammarsym {
 */
 int construct_grammarsym(struct grammarsym** result, const char* str, const int type);
 
+void print_grammarsym(struct grammarsym* to_print);
+
 #endif
