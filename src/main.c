@@ -5,6 +5,11 @@
 #include "./grammar.h"
 
 int main() {
-	printf("Hello, world.\n");
+	struct grammarsym* f;
+	struct production* f_prod;
+
+	construct_grammarsym(&f, "F", TYPE_NONTERMINAL);
+
+	construct_production(&f_prod, f);
 	return 0;
 }

@@ -8,6 +8,7 @@
 #define TYPE_EMPTY			TYPE_TERMINAL + 1
 #define TYPE_END			TYPE_EMPTY + 1
 
+#define MAX_RIGHTSIDE		10
 /* GRAMMAR SYMBOL DEFINITIONS */
 
 // A simple definition for a grammar symbol. This
@@ -112,17 +113,26 @@ int destruct_grammarsym(struct grammarsym* sym);
 */
 struct production {
 	struct grammarsym* leftside;
-	struct grammarsym* rightside[10];
+	struct grammarsym* rightside[MAX_RIGHTSIDE];
 	unsigned int rightside_len;
 };
 
 /*
 	PRECONDITIONS:
+		- leftside is properly initialized (see notes).
 	POSTCONDITIONS:
+		- If operation is successfull, result will point to an
+		allocated production.
 	SIDE-EFFECTS:
+		- N/A
 	RETURNS:
+		- 1 if operation is successful.
+		- 0 if otherwise.
 	NOTES:
+		- Only checks that leftside is not null!
+		- Sets rightside_len to 0, and all rightside productions
+		to NULL.
 */
-int construct_production(struct production** result, const struct grammarsym* leftside);
+int construct_production(struct production** result, struct grammarsym* leftside);
 
 #endif

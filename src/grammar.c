@@ -83,3 +83,20 @@ int destruct_grammarsym(struct grammarsym* sym) {
 }
 
 /* PRODUCTION OPERATIONS */
+int construct_production(struct production** result, struct grammarsym* leftside) {
+	if(!leftside) {
+		*result = NULL;
+		return 0;
+	}
+
+	struct production* temp_result = (struct production*)malloc(sizeof(struct production));
+	temp_result->leftside = leftside;
+
+	int i;
+	for(i = 0; i < MAX_RIGHTSIDE; i++)
+		temp_result->rightside[i] = NULL;
+	temp_result->rightside_len = 0;
+
+	*result = temp_result;
+	return 1;
+}
