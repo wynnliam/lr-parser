@@ -100,3 +100,16 @@ int construct_production(struct production** result, struct grammarsym* leftside
 	*result = temp_result;
 	return 1;
 }
+
+int add_rightside(struct production* prod, struct grammarsym* right) {
+	if(!prod || !right)
+		return 0;
+
+	if(prod->rightside_len >= MAX_RIGHTSIDE)
+		return 0;
+
+	prod->rightside[prod->rightside_len] = right;
+	prod->rightside_len += 1;
+
+	return 1;
+}

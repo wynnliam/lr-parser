@@ -135,4 +135,26 @@ struct production {
 */
 int construct_production(struct production** result, struct grammarsym* leftside);
 
+/*
+	PRECONDITIONS:
+		- prod should be initialized
+		- prod's rightside count should be < MAX_RIGHTSIDE
+		- right should be initialized
+	POSTCONDITIONS:
+		- prod's array updated with right being in it.
+	SIDE-EFFECTS:
+		- N/A
+	RETURNS:
+		- 1 if right is added to prod
+		- 0 if either argument is NULL or prod has too many right side items already
+	NOTES:
+		- When adding right, it goes in the rightside_len position. Treat this as the
+		rightmost item in the production. For instance if I have the production
+
+		F -> ( E )
+
+		then ( is at 0, E is 1, and ) is 2, and so on.
+*/
+int add_rightside(struct production* prod, struct grammarsym* right);
+
 #endif
