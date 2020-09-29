@@ -17,4 +17,26 @@ struct grammarsym {
 	int type;
 };
 
+/*
+	PRECONDITIONS:
+		- N/A
+	POSTCONDITIONS:
+		- result will point to a newly allocated
+		grammarsym.
+		- If construction fails (see notes), result
+		will point to null.
+	SIDE-EFFECTS:
+		- N/A
+	RETURNS:
+		- 1 if construction operation was successful.
+		- 0 if not
+	NOTES:
+		- Construction can fail if type is a terminal/nonterminal with
+		NULL str.
+		- If result doesn't point to anything, makesure it is set to NULL!
+		otherwise there will be a segfault!
+		- If type is niether terminal nor nonterminal, result's str is set to NULL
+*/
+int construct_grammarsym(struct grammarsym** result, const char* str, const int type);
+
 #endif
