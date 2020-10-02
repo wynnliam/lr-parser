@@ -2,7 +2,7 @@
 
 #include <stdio.h>
 
-#include "./grammar.h"
+#include "./globals.h"
 
 int main() {
 	struct grammarsym* f;

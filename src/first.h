@@ -32,7 +32,7 @@
 #ifndef FIRST
 #define FIRST
 
-#include "./grammar.h"
+#include "./globals.h"
 
 
 
