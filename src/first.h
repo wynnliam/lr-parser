@@ -34,8 +34,6 @@
 
 #include "./globals.h"
 
-#define MAX_FIRST	100
-
 /*
 	Defines FIRST(X) for a single grammar symbol X.
 

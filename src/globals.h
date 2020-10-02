@@ -52,4 +52,6 @@ struct production {
 
 extern struct production productions[];
 
+#define MAX_FIRST	100
+
 #endif
