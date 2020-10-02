@@ -3,6 +3,7 @@
 #include <stdio.h>
 
 #include "./globals.h"
+#include "./grammar.h"
 
 int main() {
 	struct grammarsym* f;

@@ -6,6 +6,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+struct production productions[MAX_PRODUCTIONS];
+
 /* GRAMMAR SYMBOL OPERATIONS */
 
 int construct_grammarsym(struct grammarsym** result, const char* str, const int type) {

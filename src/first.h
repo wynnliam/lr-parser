@@ -34,6 +34,23 @@
 
 #include "./globals.h"
 
+#define MAX_FIRST	100
 
+/*
+	Defines FIRST(X) for a single grammar symbol X.
+
+	PRECONDITIONS:
+		- sym is properly initialized and should be in globals productions
+	POSTCONDITIONS:
+		- Will fill result with all first grammar symbols according to rules.
+	SIDE-EFFECTS:
+		- None
+	RETURNS:
+		- The number of grammarsymbols in result.
+	NOTES:
+		- If sym is not in productions, the return value will be zero.
+		- If sym is null, will also return 0.
+*/
+int first_single_grammarsym(struct grammarsym* sym, struct grammarsym* result[MAX_FIRST]);
 
 #endif
