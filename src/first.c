@@ -11,18 +11,18 @@ static int first_single_grammarsym_nonterm(struct grammarsym* sym, struct gramma
 	// We need to search all productions where right side is sym:
 	int i;
 	for(i = 0; i < num_productions; i++) {
-		if(!grammarsym_equals(sym, productions[i].leftside))
+		if(!grammarsym_equals(sym, productions[i]->leftside))
 			continue;
 
 		// This will build FIRST(sym) according to rule 3.
 		int j;
-		for(j = 0; j < productions[i].rightside_len; j++) {
+		for(j = 0; j < productions[i]->rightside_len; j++) {
 			// Easy way to handle immediate recursion.
-			if(grammarsym_equals(sym, productions[i].rightside[j]))
+			if(grammarsym_equals(sym, productions[i]->rightside[j]))
 				continue;
 
 			struct grammarsym* curr_result[MAX_FIRST];
-			int curr_len = first_single_grammarsym(productions[i].rightside[j], curr_result);
+			int curr_len = first_single_grammarsym(productions[i]->rightside[j], curr_result);
 
 			int k = 0;
 			while(total_len < MAX_FIRST && k < curr_len) {
@@ -40,6 +40,8 @@ static int first_single_grammarsym_nonterm(struct grammarsym* sym, struct gramma
 					result[total_len] = curr_result[k];
 					total_len++;
 				}
+
+				k++;
 			}
 
 			int keep_going = 0;

@@ -7,6 +7,7 @@
 #include "./first.h"
 
 int main() {
+	// Construct the grammar symbols
 	struct grammarsym* e;
 	construct_grammarsym(&e, "E", TYPE_NONTERMINAL);
 
@@ -39,6 +40,77 @@ int main() {
 
 	struct grammarsym* id;
 	construct_grammarsym(&id, "id", TYPE_TERMINAL);
+
+	// Now construct the productions
+	struct production* e_prod;
+	construct_production(&e_prod, e);
+	add_rightside(e_prod, t);
+	add_rightside(e_prod, e1);
+	productions[num_productions] = e_prod;
+	num_productions++;
+
+	struct production *e1_prod1, *e1_prod2;
+	construct_production(&e1_prod1, e1);
+	add_rightside(e1_prod1, plus);
+	add_rightside(e1_prod1, t);
+	add_rightside(e1_prod1, e1);
+	productions[num_productions] = e1_prod1;
+	num_productions++;
+	construct_production(&e1_prod2, e1);
+	add_rightside(e1_prod2, empty);
+	productions[num_productions] = e1_prod2;
+	num_productions++;
+
+	struct production* t_prod;
+	construct_production(&t_prod, t);
+	add_rightside(t_prod, f);
+	add_rightside(t_prod, t1);
+	productions[num_productions] = t_prod;
+	num_productions++;
+
+	struct production *t1_prod1, *t1_prod2;
+	construct_production(&t1_prod1, t1);
+	add_rightside(t1_prod1, mult);
+	add_rightside(t1_prod1, f);
+	add_rightside(t1_prod1, t1);
+	productions[num_productions] = t1_prod1;
+	num_productions++;
+	construct_production(&t1_prod2, t1);
+	add_rightside(t1_prod2, empty);
+	productions[num_productions] = t1_prod2;
+	num_productions++;
+
+	struct production *f_prod1, *f_prod2;
+	construct_production(&f_prod1, f);
+	add_rightside(f_prod1, open);
+	add_rightside(f_prod1, e);
+	add_rightside(f_prod1, close);
+	productions[num_productions] = f_prod1;
+	num_productions++;
+	construct_production(&f_prod2, f);
+	add_rightside(f_prod2, id);
+	productions[num_productions] = f_prod2;
+	num_productions++;
+
+	// Print productions
+	printf("GRAMMAR: \n");
+	print_production(e_prod);
+	print_production(e1_prod1);
+	print_production(e1_prod2);
+	print_production(t_prod);
+	print_production(t1_prod1);
+	print_production(t1_prod2);
+	print_production(f_prod1);
+	print_production(f_prod2);
+
+	struct grammarsym* first_e[MAX_FIRST];
+	int first_e_len = first_single_grammarsym(f, first_e);
+	for(int i = 0; i < first_e_len; i++) {
+		print_grammarsym(first_e[i]);
+		printf(" ");
+	}
+
+	printf("\n");
 	
 	return 0;
 }
