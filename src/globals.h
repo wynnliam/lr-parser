@@ -51,6 +51,7 @@ struct production {
 };
 
 extern struct production productions[];
+extern unsigned int num_productions;
 
 #define MAX_FIRST	100
 

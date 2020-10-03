@@ -7,6 +7,7 @@
 #include <string.h>
 
 struct production productions[MAX_PRODUCTIONS];
+unsigned int num_productions = 0;
 
 /* GRAMMAR SYMBOL OPERATIONS */
 
