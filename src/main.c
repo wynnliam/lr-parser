@@ -7,34 +7,38 @@
 #include "./first.h"
 
 int main() {
-	struct grammarsym* f;
-	struct grammarsym *op, *e, *cp;
-
-	struct production* f_prod;
-
-	construct_grammarsym(&f, "F", TYPE_NONTERMINAL);
-	construct_grammarsym(&op, "(", TYPE_TERMINAL);
+	struct grammarsym* e;
 	construct_grammarsym(&e, "E", TYPE_NONTERMINAL);
-	construct_grammarsym(&cp, ")", TYPE_TERMINAL);
 
-	construct_production(&f_prod, f);
-	add_rightside(f_prod, op);
-	add_rightside(f_prod, e);
-	add_rightside(f_prod, cp);
+	struct grammarsym* t;
+	construct_grammarsym(&t, "T", TYPE_NONTERMINAL);
 
-	print_production(f_prod);
+	struct grammarsym* e1;
+	construct_grammarsym(&e1, "E'", TYPE_NONTERMINAL);
 
-	printf("FIRST('(') = { ");
-	struct grammarsym* first_open[MAX_FIRST];
-	int result_first = first_single_grammarsym(op, first_open);
+	struct grammarsym* plus;
+	construct_grammarsym(&plus, "+", TYPE_TERMINAL);
 
-	int i;
-	for(i = 0; i < result_first; i++) {
-		print_grammarsym(first_open[i]);
-	}
+	struct grammarsym* empty;
+	construct_grammarsym(&empty, NULL, TYPE_EMPTY);
 
-	printf(" }\n");
+	struct grammarsym* f;
+	construct_grammarsym(&f, "F", TYPE_NONTERMINAL);
 
-	destruct_production(f_prod);
+	struct grammarsym* t1;
+	construct_grammarsym(&t1, "T'", TYPE_NONTERMINAL);
+
+	struct grammarsym* mult;
+	construct_grammarsym(&mult, "*", TYPE_TERMINAL);
+
+	struct grammarsym* open;
+	construct_grammarsym(&open, "(", TYPE_TERMINAL);
+
+	struct grammarsym* close;
+	construct_grammarsym(&close, ")", TYPE_TERMINAL);
+
+	struct grammarsym* id;
+	construct_grammarsym(&id, "id", TYPE_TERMINAL);
+	
 	return 0;
 }
