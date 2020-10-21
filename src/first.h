@@ -51,4 +51,21 @@
 */
 int first_single_grammarsym(struct grammarsym* sym, struct grammarsym* result[MAX_FIRST]);
 
+/*
+	Defines FIRST(X) for a string of grammar symbols X.
+
+	PRECONDITIONS:
+		- syms are properly initialized and should be in globals productions.
+	POSTCONDITIONS:
+		- Will fill the result array according to the rule given above.
+	SIDE-EFFECTS:
+		- result array will be modified.
+	RETURNS:
+		- THe number of grammar symbols in result.
+	NOTES:
+		- If syms is NULL or symslen is 0, will return 0. Otherwise,
+		it will behave as if all syms are 
+*/
+int first_string_grammarsym(struct grammarsym** syms, const int symslen, struct grammarsym* result[MAX_FIRST]);
+
 #endif

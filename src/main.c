@@ -103,12 +103,16 @@ int main() {
 	print_production(f_prod1);
 	print_production(f_prod2);
 
-	struct grammarsym* first_e[MAX_FIRST];
-	int first_e_len = first_single_grammarsym(f, first_e);
-	for(int i = 0; i < first_e_len; i++) {
-		print_grammarsym(first_e[i]);
-		printf(" ");
-	}
+	struct grammarsym* grammar_str[2];
+	grammar_str[0] = t;
+	grammar_str[1] = e1;
+
+	struct grammarsym* result[MAX_FIRST];
+	int result_count = first_string_grammarsym(grammar_str, 2, result);
+	printf("FIRST(TE) = ");
+	int i;
+	for(i = 0; i < result_count; i++)
+		print_grammarsym(result[i]);
 
 	printf("\n");
 	

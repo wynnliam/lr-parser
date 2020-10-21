@@ -82,3 +82,53 @@ int first_single_grammarsym(struct grammarsym* sym, struct grammarsym* result[MA
 
 	return 0;
 }
+
+int first_string_grammarsym(struct grammarsym** syms, const int symslen, struct grammarsym* result[MAX_FIRST]) {
+	if(symslen < 1)
+		return 0;
+
+	// Helpful to keep track of the global result, as opposed to
+	// the result of an individual result.
+	int result_len = 0;
+
+	// Index for the current symbol in the string.
+	int i = 0;
+	// If 1, then we found an empty in our last grammar symbol, so
+	// we should look at the next one in the list.
+	int keep_going = 0;
+
+	do {
+		keep_going = 0;
+		// First, we want to add FIRST(syms[0]) to result
+		struct grammarsym* curr_result[MAX_FIRST];
+		// The count of an individual first result.
+		int count = first_single_grammarsym(syms[i], curr_result);
+
+		int j, k, should_add = 1;
+		for(k = 0; k < count; k++) {
+			if(curr_result[k]->type == TYPE_EMPTY)
+				keep_going = 1;
+
+			for(j = 0; j < result_len; j++) {
+				if(grammarsym_equals(result[j], curr_result[k])) {
+					should_add = 0;
+					break;
+				}
+			}
+
+			// If we scanned result and didn't find it, then add it.
+			// If it happens to be TYPE_EMPTY then we know to look at the next
+			// grammar symbol in our input array.
+			if(should_add == 1 && result_len < MAX_FIRST) {
+				result[result_len] = curr_result[k];
+				result_len++;
+
+			}
+		}
+
+		i++;
+	} while(keep_going == 1 && i < symslen);
+
+
+	return result_len;
+}
