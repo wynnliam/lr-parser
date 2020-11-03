@@ -53,6 +53,7 @@ struct production {
 extern struct production* productions[];
 extern unsigned int num_productions;
 
+// Number of grammar symbols we can put into the FIRST result.
 #define MAX_FIRST	100
 
 #endif
