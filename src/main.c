@@ -5,6 +5,7 @@
 #include "./globals.h"
 #include "./grammar.h"
 #include "./first.h"
+#include "./items.h"
 
 int main() {
 	// Construct the grammar symbols
@@ -115,6 +116,10 @@ int main() {
 		print_grammarsym(result[i]);
 
 	printf("\n");
+
+	struct item* my_item;
+	construct_item(3, 2, e, &my_item);
+	display_item(my_item);
 	
 	return 0;
 }

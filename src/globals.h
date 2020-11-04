@@ -61,7 +61,12 @@ extern unsigned int num_productions;
 #define MAX_ITEM_PER_SET	100
 
 struct item {
-	struct grammarsym* symbol;
+	// Neccessary for cannonical LR parsers.
+	// Used to refine set of states.
+	struct grammarsym* lookahead;
+	// Index into productions array.
+	int production;
+	// Index into rightside of productions[index].
 	int position;
 };
 

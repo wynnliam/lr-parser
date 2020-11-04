@@ -85,3 +85,32 @@
 */
 
 #include "./globals.h"
+
+/*
+	PRECONDITIONS:
+		- All grammar symbols and productions constructed.
+	POSTCONDITIONS:
+		- result will be allocated and have all members set
+	SIDE-EFFECTS:
+		- N/A
+	RETURNS:
+		1 - result values set properly
+		0 - lookahead was null, or production is invalid number
+	NOTES:
+		- If result is not allocated or not null, it will have undefined behavior!
+*/
+int construct_item(const int production, const int position, struct grammarsym* lookahead, struct item** result);
+
+/*
+	PRECONDITIONS:
+		- dis constructed properly with construct_item.
+	POSTCONDITIONS:
+		- None
+	SIDE-EFFECTS:
+		- Screen display will have item printed
+	RETURNS:
+		- None
+	NOTES:
+		- None
+*/
+void display_item(struct item* dis);
