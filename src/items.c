@@ -42,6 +42,15 @@ void print_item(struct item* dis) {
 	printf("\n");
 }
 
+int compare_item(struct item* a, struct item* b) {
+	if(!a || !b)
+		return 0;
+	else
+		return a->production == b->production &&
+			   a->position == b->position &&
+			   a->lookahead == b->lookahead;
+}
+
 void destruct_item(struct item* clear) {
 	if(clear)
 		free(clear);

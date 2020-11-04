@@ -116,6 +116,25 @@ int construct_item(const int production, const int position, struct grammarsym* 
 void print_item(struct item* dis);
 
 /*
+	Determines if the contents of a equal the contents of b.
+
+	PRECONDITIONS:
+		- a, b constructed with construct_item.
+		They cannot be NULL!
+	POSTCONDITIONS:
+		- N/A
+	SIDE EFFECTS:
+		- None
+	RETURNS:
+		0 - a != b
+		1 - a == b
+	NOTES:
+		- The "deep" comparison of a and b will only do pointer comparison.
+		These are, afterall, global values.
+*/
+int compare_item(struct item* a, struct item* b);
+
+/*
 	PRECONDITIONS:
 		- clear was allocated properly with construct_item.
 	POSTCONDITIONS:
