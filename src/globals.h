@@ -56,4 +56,17 @@ extern unsigned int num_productions;
 // Number of grammar symbols we can put into the FIRST result.
 #define MAX_FIRST	100
 
+// Definitions for items, and sets of items
+
+#define MAX_ITEM_PER_SET	100
+
+struct item {
+	struct grammarsym* symbol;
+	int position;
+};
+
+struct item_set {
+	struct item* items[MAX_ITEM_PER_SET];
+};
+
 #endif
