@@ -66,11 +66,21 @@
 	This is one set of items. As we are constructing these sets of items,
 	we build our DFA of viables prefixes using an operation called "goto".
 
-	TODO: Define goto more
+	goto is a fundamental part of our LR parser. It is a function that
+	takes a state plus a grammar symbol and returns another state. Since our
+	states tell us the set of items we could see, goto will tell us which
+	state to go to given new information. As stated before, goto + sets of items
+	gives us a DFA.
 
-	It must be emphasized - this DFA is NOT the parser itself! The DFA
-	is ultimately used to build the parsing table. Please see parser.h
-	for more.
-	
+	This DFA is used to recognize not strings in the grammar per se, but viable
+	prefixes. The viable prefixes are right sentential forms that can appear on the
+	stack. So the idea is that given a certain viable prefix we've seen, what productions
+	could have generated that? Then, when we see a new character thrown on the stack,
+	where can we go?
+
+	In sum, a pushdown automata has three pieces:
+	1. a finite set of states (which we get from our sets of items)
+	2. a set of transitions (which goto gives us)
+	3. a stack, we get this by virtue of the fact this is an LR parser.
 */
 
