@@ -119,7 +119,8 @@ int main() {
 
 	struct item* my_item;
 	construct_item(3, 2, e, &my_item);
-	display_item(my_item);
+	print_item(my_item);
+	destruct_item(my_item);
 	
 	return 0;
 }

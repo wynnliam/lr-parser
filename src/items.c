@@ -19,7 +19,7 @@ int construct_item(const int production, const int position, struct grammarsym* 
 	return 1;
 }
 
-void display_item(struct item* dis) {
+void print_item(struct item* dis) {
 	if(!dis)
 		return;
 
@@ -40,4 +40,9 @@ void display_item(struct item* dis) {
 		printf(".");
 
 	printf("\n");
+}
+
+void destruct_item(struct item* clear) {
+	if(clear)
+		free(clear);
 }

@@ -113,4 +113,18 @@ int construct_item(const int production, const int position, struct grammarsym* 
 	NOTES:
 		- None
 */
-void display_item(struct item* dis);
+void print_item(struct item* dis);
+
+/*
+	PRECONDITIONS:
+		- clear was allocated properly with construct_item.
+	POSTCONDITIONS:
+		- clear deallocated
+	SIDE-EFFECTS:
+		- None
+	RETURNS:
+		- None
+	NOTES:
+		- No members are deallocated since they refer to global values.
+*/
+void destruct_item(struct item* clear);
