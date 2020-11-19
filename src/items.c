@@ -51,6 +51,12 @@ int compare_item(struct item* a, struct item* b) {
 			   a->lookahead == b->lookahead;
 }
 
+int is_valid_item(struct item* verify) {
+	if(!verify)
+		return 0;
+	return 1;
+}
+
 void destruct_item(struct item* clear) {
 	if(clear)
 		free(clear);

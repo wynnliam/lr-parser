@@ -135,6 +135,28 @@ void print_item(struct item* dis);
 int compare_item(struct item* a, struct item* b);
 
 /*
+	Determines if verify has a form [A -> a . Bb, a'] where
+	a - A string of grammar symbols (can be empty)
+	B - A nonterminal
+	b - Another string of grammar symbols (can be empty).
+	a' - A terminal.
+
+	This is a utility function used to compute the closure
+	on an a set of Items. Please see that for more information.
+
+	PRECONDITIONS:
+		- verify is properly allocated.
+	POSTCONDITIONS:
+		- N/A
+	SIDE EFFECTS:
+		- N/A
+	RETURNS:
+		- 0 if verify does not have the form above.
+		- 1 if otherwise.
+*/
+int is_valid_item(struct item* verify);
+
+/*
 	PRECONDITIONS:
 		- clear was allocated properly with construct_item.
 	POSTCONDITIONS:
