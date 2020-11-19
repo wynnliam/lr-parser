@@ -118,7 +118,7 @@ int main() {
 	printf("\n");
 
 	struct item* my_item;
-	construct_item(3, 2, e, &my_item);
+	construct_item(3, 1, close, &my_item);
 	if(compare_item(my_item, my_item))
 		printf("Item comparison works!\n");
 	print_item(my_item);

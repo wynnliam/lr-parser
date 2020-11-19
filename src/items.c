@@ -54,6 +54,25 @@ int compare_item(struct item* a, struct item* b) {
 int is_valid_item(struct item* verify) {
 	if(!verify)
 		return 0;
+
+	// These are just helpful variables
+	int pos = verify->position;
+	int prodc = verify->production;
+	int rlen = productions[prodc]->rightside_len;
+	int ltype = verify->lookahead->type;
+
+	// If pos is somehow out of the bounds of the production,
+	// OR it is such that a nonterminal cannot follow it, return 0.
+	if(0 > pos || pos >= rlen)
+		return 0;
+
+	// The symbol immediately following the dot must be a nonterminal
+	if(productions[prodc]->rightside[pos]->type != TYPE_NONTERMINAL)
+		return 0;
+
+	if(ltype != TYPE_TERMINAL && ltype != TYPE_END)
+		return 0;
+
 	return 1;
 }
 
