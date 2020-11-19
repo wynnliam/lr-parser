@@ -121,7 +121,14 @@ int main() {
 	construct_item(3, 1, close, &my_item);
 	if(compare_item(my_item, my_item))
 		printf("Item comparison works!\n");
+
 	print_item(my_item);
+
+	if(is_valid_item(my_item))
+		printf("Is valid\n");
+	else
+		printf("Is not valid\n");
+
 	destruct_item(my_item);
 	
 	return 0;

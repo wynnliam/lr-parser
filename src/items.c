@@ -25,6 +25,7 @@ void print_item(struct item* dis) {
 
 	struct production* p = productions[dis->production];
 
+	printf("[");
 	print_grammarsym(p->leftside);
 	printf(" -> ");
 
@@ -38,6 +39,10 @@ void print_item(struct item* dis) {
 
 	if(i == dis->position)
 		printf(".");
+	printf(", ");
+
+	print_grammarsym(dis->lookahead);
+	printf("]");
 
 	printf("\n");
 }
